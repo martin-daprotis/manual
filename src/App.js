@@ -32,21 +32,19 @@ function App() {
   }
 
   return (
-    <>
-      {!takeQuiz ? 
-        <div className="App">
-          <Container  maxWidth="lg">
+      <div className="App">
+        <Container  maxWidth="lg">
+          <div style={{display:`${takeQuiz ? 'none':'block' }`}}>
             <Header takeQuiz={handleTakeQuiz}/>
             <SimpleComp data={dataHair} side='left'/>
             <SimpleComp data={dataSex} side='right'/>
             <Footer/>
-          </Container>
-          
-        </div>
-      :
-       <Quiz/>
-      }
-    </>
+          </div>
+          <div style={{display:`${takeQuiz ? 'block' : 'none'}`}}>
+            <Quiz />
+          </div>
+        </Container>
+      </div>
   )
 }
 

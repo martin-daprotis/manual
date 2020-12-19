@@ -24,7 +24,7 @@ const footerData = [
         "INFO",
         'Support',
         'Customer Service',
-        'Ger Started Guide'
+        'Get Started Guide'
   ]
 ]
 
@@ -44,7 +44,7 @@ const index = ({data}) => {
             </List>
           ))}
           <List>
-            <li>Seguinos</li>
+            <li>FOLLOW US</li>
             <li>
               <SocialNetwork>
                 <Facebook/>

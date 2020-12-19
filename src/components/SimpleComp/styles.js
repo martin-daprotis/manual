@@ -5,26 +5,23 @@ import theme from "../../Styles/themes/main"
 
 const ContentContainer = styled.div`
   position:relative;
-  margin:auto;
   height: 30em;
-  width:65em;
-  margin:100px;
-  margin-bottom:3em;
-`
-const Container = styled.div`
-  position:absolute;
-  top:0;
-  ${props => `${props.side}: 6%`};
-  height: 100%;
   width:80%;
-  margin:auto;
-  display: flex;
-  justify-content:center;
-  flex-direction: ${props => props.side==='left' ? 'row':'row-reverse'};
-  z-index:2;
+  margin:8em auto;
+
+  & p {
+      text-align:${props => props.side}
+    }
+
+
 `
 const ImageContainer = styled.div`
-  width:60%;
+  position:absolute;
+  top:0;
+  ${props =>  `${props.side}:9%;`}
+  width: 25em;
+  height:100%;
+  z-index:2;
   background-repeat: no-repeat;
   background-size:cover; 
   border-radius:5px;
@@ -39,7 +36,7 @@ const ImageContainer = styled.div`
 const NumberContainer = styled.div`
   position:absolute;
   top:-10%;
-  ${props => `${props.side}:35%`};
+  ${props => `${props.side}:35% `};
   height:100%;
   width:60%;
   font-family: Montserrat;
@@ -53,66 +50,60 @@ const NumberContainer = styled.div`
   z-index:1;
 `
 
-const InfoContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content:space-evenly;
-    align-items:${props =>  props.side==='left' ? `flex-start`:`flex-end`};
-    width:40%;
-    height:40%;
-    margin-top:12em;
-    ${props =>  `margin-${props.side}:5em;`}
-    
-
-    & p {
-      text-align:${props => props.side}
-    }
-
-    @media ${device.maxMobileL} { 
-        justify-content: center;
-        height: auto;
-        width: auto;
-        top: 2em;
-        left: 1em;
-    }
-`
-const Description = styled.p`
-  font-family: OpenSans;
-  font-size: 0.9em;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.83;
-  letter-spacing: normal;
-  color: #0c3c3d;
-`
-
 const Title = styled.p`
+  position:absolute;
+  top:10em;
+  ${props =>  `${props.side}:55%;`}
   font-family: Montserrat;
-  font-size: 12px;
+  font-size: 0.8em;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
   letter-spacing: 2.4px;
   color: ${theme.colors.tealish};
+  margin:0.4em;
+  z-index:3;
 `
 
 const Subtitle = styled.p`
+  position:absolute;
+  top:7em;
+  ${props =>  `${props.side}:55%;`}
+  width:14em;
   font-family: Helvetica;
-  font-size: 22px;
+  font-size: 1.5em;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.45;
   letter-spacing: normal;
   color: #0c3c3d;
+  margin:0.4em;
+  z-index:3;
+`
+
+const Description = styled.p`
+  position:absolute;
+  top:20em;
+  ${props =>  `${props.side}:55%;`}
+  width:30em;
+  font-family: OpenSans;
+  font-size: 0.8em;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.83;
+  letter-spacing: normal;
+  color: #0c3c3d;
+  margin:0.4em;
+  z-index:3;
 `
 
 const Card = styled.div`
   margin: 100px auto 0;
-  width: 25em;
-  height: 30em;
+  width: 20em;
+  height: 25em;
   perspective: 1000px;
   -webkit-perspective: 1000px;
   -moz-perspective: 1000px;
@@ -126,6 +117,9 @@ const Card = styled.div`
       -webkit-transform-style: preserve-3d;
       -moz-transform-style: preserve-3d;
       position: relative;
+      -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
     }
 
     & .card__inner.flipped {
@@ -139,8 +133,6 @@ const Card = styled.div`
       position: absolute;
       width: 100%;
       height: 100%;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
       border-radius: 16px;
       box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
     }
@@ -148,7 +140,7 @@ const Card = styled.div`
     & .card__face--front {
       background-repeat: no-repeat;
       background-size:cover; 
-      border-radius:5px;
+      border-radius: 16px;
       background-image: url(${props => props.images[0]});
       background-image: 
         image-set( 
@@ -167,6 +159,7 @@ const Card = styled.div`
         width:100%;
         height:30%;
         top:70%;
+        border-radius: 16px;
         background-image : linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,.2));
       }
 
@@ -174,7 +167,7 @@ const Card = styled.div`
 
     & .card__face--front h6 {
       position:absolute;
-      top:65%;
+      top:60%;
       color: ${theme.colors.tealish};
       font-size: 32px;
       z-index:2;
@@ -230,7 +223,6 @@ const Card = styled.div`
     }
 
     & .card__body p {
-      font-size: 1.2em;
       font-family: Montserrat;
       line-height: 1.4;
     }
@@ -247,18 +239,49 @@ const Card = styled.div`
     }
 
 `
+const CardSubtitle = styled.p`
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:20em;
+  font-family: Helvetica;
+  font-size: 1.5em;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.45;
+  letter-spacing: normal;
+  color: #0c3c3d;
+  z-index:3;
+`
 
-
-
+const CardDescription = styled.p`
+  position:absolute;
+  top:12em;
+  left:50%;
+  transform:translateX(-50%);
+  width:23em;
+  font-family: OpenSans;
+  font-size: 0.8em;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.83;
+  letter-spacing: normal;
+  color: #0c3c3d;
+  margin:0.4em;
+  z-index:3;
+`
 
 export {
-  Container,
-  InfoContainer,
   ContentContainer,
   ImageContainer,
   NumberContainer,
   Description,
   Title,
   Subtitle,
-  Card
+  Card,
+  CardDescription,
+  CardSubtitle
 }

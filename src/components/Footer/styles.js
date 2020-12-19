@@ -4,12 +4,16 @@ import device from "../../Styles/device";
 import theme from "../../Styles/themes/main"
 
 const Container = styled.div`
-  height: 20em;
   margin: 80px 0 0;
   padding: 78px 40px 27px;
   background-color: #e5f5f4;
   display: flex;
   justify-content:center;
+
+  @media ${device.maxMobileL} { 
+    padding: 38px 10px 17px;
+  }  
+
 `
 const LogoContainer = styled.div`
   flex: 0 0 30%;
@@ -17,8 +21,8 @@ const LogoContainer = styled.div`
 `
 
 const Logo = styled.div`
-  width: 5.2em;
-  height: 5em;
+  width: 5.5em;
+  height: 5.6em;
   background-position:center;
   background-repeat: no-repeat;
   background-image: url(${props => props.images[0]});
@@ -28,13 +32,17 @@ const Logo = styled.div`
       url(${props => props.images[1]}) 2x ,
       url(${props => props.images[2]}) 3x 
     );
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  -webkit-background-size: auto;
+  -moz-background-size: auto;
+  -o-background-size: auto;
+  background-size: auto;
   position:absolute;
   top:5%;
   left:30%;
+
+  @media ${device.maxMobileL} { 
+    top:0;
+  }  
 
 `
 
@@ -50,6 +58,7 @@ const RowContainer = styled.div`
 
   @media ${device.maxMobileL} { 
     grid-template-columns: repeat(2, 1fr);
+    padding-left: 1em;
   }  
 
 `
@@ -59,19 +68,19 @@ const SocialNetwork  = styled.div`
   display:flex;
   flex-direction:row;
   justify-content: space-between;
-  margin-right:10em;
+  margin-right:3em;
 
   & svg {
-    width:2.5em;
-    height:2.5em;
+    width:2em;
+    height:2em;
     margin:0.4em;
     color: #0c3c3d;  
   }
   
   @media ${device.maxMobileL} { 
-    transform: translate(-30px,-30px);
+    flex-direction:column;
     & svg {
-      margin:1.5em;
+      margin:0.5em;
     }
   }  
 
