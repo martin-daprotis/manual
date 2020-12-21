@@ -1,6 +1,9 @@
-import React,{useEffect,useState} from 'react';
-import axios from 'axios';
-import {Container,Question,Opt,ImageContainer,OptionContainer,ImgOptionContainer} from "./styles";
+import React,{useEffect,useState} from 'react'
+import axios from 'axios'
+import ImageOptions from './ImageOptions'
+import ResultPage from './ResultPage'
+import {Container,Question,Opt,OptionContainer,Wrapper} from "./styles"
+import ReactCSSTransitionGroup from 'react-transition-group'
 
 let quiz = {
   "questions": [
@@ -35,10 +38,20 @@ let quiz = {
   ]
 }
 
+const BooleanOptions = ({options,handleClick}) => {
+  return  <OptionContainer>
+            {options.map(o =>  {
+                const option =Object.entries(o)[0];
+                return <Opt  onClick={() => handleClick(option[1])}> {option[0]}</Opt>
+              }
+            )}
+          </OptionContainer>
+}
+  
 
 const Quiz = () => {
   const [questions, setQuestions] = useState(quiz.questions);
-  const [answers,serAnswers] = useState({});
+  const [answer,serAnswer] = useState(false);
   const [step, setStep] = useState(0);
 
   useEffect(() => {
@@ -46,75 +59,45 @@ const Quiz = () => {
   }, []);
  
   const handleClick = (value) => {
-    const newAnswer= {step,value};
-    serAnswers({newAnswer,...answers});
+    if(step!==0){
+      serAnswer(oldAnswer => oldAnswer || value);
+    }
     setStep(oldStep => oldStep+1)
   }
 
-  
-  const extractFromImg = (str,prop) => {
-    switch (prop) {
-      case 'alt':{
-        var altRegExp = /<img[^>]+alt='([^'>]+)'/g;
-        let res= altRegExp.exec(str);
-        return res ? res[1]:'';
-      }
-      case 'src':{
-        var srcRegExp = /<img[^>]+src ='(https:\/\/[^'>]+)'/g;
-        let res= srcRegExp.exec(str);
-        return res ? res[1]:'';
-      }
-      case 'srcset':{
-        var srcsetRegExp = /<img[^>]+srcset ='(https:\/\/[^'>]+)'/g;
-        let res= srcsetRegExp.exec(str);
-        return res ? res[1]:'';
-      }
-      default:
-        return str;
-    }
-  }
 
   console.log(questions.length,step+1)
 
   return (
+      <Wrapper>
       <Container>
           {
             questions.length >= step+1 && questions.map((q,i) => {
-              const firstOpt = Object.keys(q.options[0])[0];
-              if(i===step)
-                return <>
-                  <Question>{q.question}</Question>
-                  { q.options.length && firstOpt.includes('<img') ?
-                      <ImgOptionContainer>
-                        {q.options.map(o => {
-                            const option =Object.entries(o)[0];
-                            const alt =extractFromImg(option[0],'alt')
-                            const src =extractFromImg(option[0],'src')
-                            const srcset =extractFromImg(option[0],'srcset')
-                            return <ImageContainer  onClick={() => handleClick(option[1])}>
-                                    <img style={{width:'10em',height:'10em'}} alt={`${alt}`} src={`${src}`} srcset={`${srcset}`}/>
-                                </ImageContainer>
-                          })}
-                      </ImgOptionContainer>
-                    :
-                    <OptionContainer>
-                      {q.options.map(o =>  {
-                          const option =Object.entries(o)[0];
-                          return <Opt  onClick={() => handleClick(option[1])}> {option[0]}</Opt>
-                        }
-                      )}
-                    </OptionContainer>
-                  }
-                  </>
+              if(q.options.length) { 
+                const firstOpt = Object.keys(q.options[0])[0];
+                if(i===step)
+                  return <>
+                    <Question>{q.question}</Question>
+                    { q.options.length && firstOpt.includes('<img') ?
+                        <ImageOptions options = {q.options} handleClick = {handleClick}/>
+                      :
+                        <BooleanOptions options = {q.options} handleClick = {handleClick}/>
+                    }
+                    </>
+              }
+              else{
+                return null;
+              }
             })
           }
-          {
-            questions.length === step ?
-            <div>GREAT!!</div>
-            :
-            null
-          }
       </Container>
+       {
+        questions.length === step ?
+        <ResultPage answer = {answer}/>
+        :
+        null
+      }
+      </Wrapper>
   );
 };
 

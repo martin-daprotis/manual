@@ -17,7 +17,7 @@ const BannerContainer = styled.div`
         url(${props => props.images[2]}) 3x 
       );
 
-      @media ${device.maxMobileL} { 
+      @media ${ `${device.maxMobileL} , ${device.maxTablet}`}  { 
           &:after {
               content: '';
               display: block;
@@ -63,7 +63,11 @@ const Logo = styled.div`
   background-image: 
     image-set( url(${props => props.images[0]}) 1x, url(${props => props.images[1]}) 2x , url(${props => props.images[2]}) 3x );
   margin-bottom:3em;  
-  z-index:2;
+  z-index:3;
+
+  @media ${device.maxMobileL} { 
+    color:${theme.colors.tealish};
+    }
 `
 
 const Title = styled.div`
@@ -91,6 +95,15 @@ const Title = styled.div`
         text-align:left;
       }
     }
+
+    @media ${device.maxTablet} { 
+      width: 300px;
+      & span {  
+        color:#FFF;
+        font-size:3.5em;;
+        text-align:left;
+      }
+    }
 `
 const Subtitle = styled.div`
   max-width: 300px;
@@ -110,8 +123,9 @@ const Subtitle = styled.div`
       margin:0;
     }
 
-   @media ${device.maxMobileL} { 
-    & p {color:${theme.colors.tealish};}
+   @media ${ `${device.maxMobileL} , ${device.maxTablet}`} { 
+     margin-top:1em;
+    & p { color:${theme.colors.tealish}; }
     }
 `
 const Button = styled.div`
@@ -147,11 +161,10 @@ const Button = styled.div`
     }
   }
 
-  @media ${device.maxMobileL} { 
-      margin-top:6em;
-      -webkit-box-shadow: 0px 0px 20px 1px rgba(255,255,255,0.75);
-      -moz-box-shadow: 0px 0px 20px 1px rgba(255,255,255,0.75);
-      box-shadow: 0px 0px 10px 1px rgba(255,255,255,0.75);
+  @media ${ `${device.maxMobileL} , ${device.maxTablet}`} { 
+      position: absolute;
+      bottom: -8em;
+      left: -1em;
     }
 
 `

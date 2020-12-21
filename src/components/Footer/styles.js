@@ -25,7 +25,7 @@ const Logo = styled.div`
   height: 5.6em;
   background-position:center;
   background-repeat: no-repeat;
-  background-image: url(${props => props.images[0]});
+  background-image: url(${props => props.images[1]});
   background-image: 
     image-set( 
       url(${props => props.images[1]}) 1x, 
@@ -78,7 +78,7 @@ const SocialNetwork  = styled.div`
   }
   
   @media ${device.maxMobileL} { 
-    flex-direction:column;
+    transform:translateX(-15px);
     & svg {
       margin:0.5em;
     }
@@ -90,6 +90,7 @@ const List = styled.ul`
   list-style-type: none;
   font-size: 0.85em;
   text-align:left;
+  padding-left:1em;
 
   & li:first-child{
     color: ${theme.colors.tealish};

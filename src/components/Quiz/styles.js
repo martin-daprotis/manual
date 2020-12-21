@@ -3,9 +3,15 @@ import styled from "styled-components";
 import device from "../../Styles/device";
 import theme from "../../Styles/themes/main"
 
+const Wrapper = styled.div`
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`
+
 const Container = styled.div`
-  height: 20em;
-  padding: 78px 40px 27px;
   display: flex;
   flex-direction:column;
   justify-content:center;
@@ -24,11 +30,10 @@ const Container = styled.div`
     }
   }
 
-
 `
 const Question = styled.p`
   font-family: Helvetica;
-  font-size:2em;
+  font-size:1.8em;
   color: #0c3c3d;
   text-align: center;
 `
@@ -61,13 +66,27 @@ const OptionContainer = styled.div`
   justify-content:space-evenly;
   width:30em;
   margin:auto;
+
+  @media ${device.maxMobileL} { 
+    width:100%;
+  }
+
 `
 
 const ImgOptionContainer= styled.div`
- display:flex;
-  justify-content:space-evenly;
-  width:80%;
-  margin:auto;
+  display:grid;
+  grid-template-columns: repeat(6, 1fr);
+
+  @media ${device.maxTablet} { 
+    grid-template-columns: repeat(3, 1fr);
+    padding-left: 1em;
+  }  
+
+  @media ${device.maxMobileL} { 
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 1em;
+  }  
+
 `
 
 const ImageContainer = styled.div`
@@ -84,11 +103,43 @@ const ImageContainer = styled.div`
   }
 `
 
+const Logo = styled.div`
+  width: 40px;
+  height: 37.4px;
+  -webkit-background-size: auto;
+  -moz-background-size: auto;
+  -o-background-size: auto;
+  background-size: auto;
+  background-image: url(${props => props.images[0]});
+  background-image: 
+    image-set( url(${props => props.images[0]}) 1x, url(${props => props.images[1]}) 2x , url(${props => props.images[2]}) 3x );
+  margin: 1em auto;
+`
+
+const Result = styled.div`
+  position:relative;
+  background-color:#e5f5f4;
+  font-family: Montserrat;
+  line-height: 1.4;
+  font-size:1.2em;
+  padding:3em 1em;
+  margin: 0;
+  color:#0c3c3d;
+
+  & a {
+    color:#0c3c3d;
+  }
+
+`
+
 export {
+  Wrapper,
   Container,
+  Logo,
   Question,
   Opt,
   ImageContainer,
   OptionContainer,
-  ImgOptionContainer
+  ImgOptionContainer,
+  Result
 }

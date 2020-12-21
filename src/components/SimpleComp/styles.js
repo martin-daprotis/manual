@@ -118,8 +118,8 @@ const Card = styled.div`
       -moz-transform-style: preserve-3d;
       position: relative;
       -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      backface-visibility: hidden;
     }
 
     & .card__inner.flipped {
@@ -159,7 +159,7 @@ const Card = styled.div`
         width:100%;
         height:30%;
         top:70%;
-        border-radius: 16px;
+        border-radius:  0 0 16px 16px;
         background-image : linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,.2));
       }
 
@@ -171,7 +171,7 @@ const Card = styled.div`
       color: ${theme.colors.tealish};
       font-size: 32px;
       z-index:2;
-
+      text-align: center;
     }
 
     & .card__face--back {
@@ -210,6 +210,7 @@ const Card = styled.div`
       text-transform: uppercase;
       text-align: center;
       font-family: Montserrat;
+      padding: 0 0.5em;
     }
 
     & .card__body {
@@ -283,5 +284,5 @@ export {
   Subtitle,
   Card,
   CardDescription,
-  CardSubtitle
+  CardSubtitle,
 }
