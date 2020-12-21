@@ -10,9 +10,9 @@ import {
 
 const Header = ({takeQuiz,...props}) => {
      return(
-         <BannerContainer images={['/media/hair-cat-header.png','/media/hair-cat-header@2x.png','/media/hair-cat-header@3x.png']}>
+         <BannerContainer images={['./media/hair-cat-header.png','./media/hair-cat-header@2x.png','./media/hair-cat-header@3x.png']}>
              <InfoContainer>
-               <Logo  images={['/media/logo/manual-symblol.png','/media/logo/manual-symblol@2x.png','/media/logo/manual-symblol@3x.png']}/>
+               <Logo  images={['./media/logo/manual-symblol.png','./media/logo/manual-symblol@2x.png','./media/logo/manual-symblol@3x.png']}/>
                 <Title>
                   <span>BE GOOD</span>
                   <br/>
