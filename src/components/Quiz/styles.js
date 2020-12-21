@@ -5,10 +5,13 @@ import theme from "../../Styles/themes/main"
 
 const Wrapper = styled.div`
   margin: 0;
+  overflow:hidden;
+  width:90%;
+  height:100%;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -25%);
 `
 
 const Container = styled.div`
@@ -65,6 +68,7 @@ const OptionContainer = styled.div`
   display:flex;
   justify-content:space-evenly;
   width:30em;
+  height:5em;
   margin:auto;
 
   @media ${device.maxMobileL} { 

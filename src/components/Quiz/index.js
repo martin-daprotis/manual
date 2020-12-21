@@ -1,9 +1,9 @@
-import React,{useEffect,useState} from 'react'
+import React,{useRef,useEffect,useState} from 'react'
 import axios from 'axios'
 import ImageOptions from './ImageOptions'
 import ResultPage from './ResultPage'
 import {Container,Question,Opt,OptionContainer,Wrapper} from "./styles"
-import ReactCSSTransitionGroup from 'react-transition-group'
+import { gsap } from 'gsap';
 
 let quiz = {
   "questions": [
@@ -50,13 +50,22 @@ const BooleanOptions = ({options,handleClick}) => {
   
 
 const Quiz = () => {
-  const [questions, setQuestions] = useState(quiz.questions);
   const [answer,serAnswer] = useState(false);
   const [step, setStep] = useState(0);
+  const wrapperRef=useRef();
+  const resultRef=useRef();
 
   useEffect(() => {
-    setQuestions(quiz.questions);
-  }, []);
+    gsap.from(wrapperRef.current,{
+      duration:1,
+      x: '100%',
+      ease:'power4'
+    });
+    gsap.from(resultRef.current,{
+      duration:1,
+      opacity: 0
+    });
+  }, [step]);
  
   const handleClick = (value) => {
     if(step!==0){
@@ -66,13 +75,11 @@ const Quiz = () => {
   }
 
 
-  console.log(questions.length,step+1)
-
   return (
       <Wrapper>
-      <Container>
+      <Container ref={wrapperRef}>
           {
-            questions.length >= step+1 && questions.map((q,i) => {
+            quiz.questions.length >= step+1 && quiz.questions.map((q,i) => {
               if(q.options.length) { 
                 const firstOpt = Object.keys(q.options[0])[0];
                 if(i===step)
@@ -84,6 +91,7 @@ const Quiz = () => {
                         <BooleanOptions options = {q.options} handleClick = {handleClick}/>
                     }
                     </>
+                return null
               }
               else{
                 return null;
@@ -91,12 +99,14 @@ const Quiz = () => {
             })
           }
       </Container>
-       {
-        questions.length === step ?
-        <ResultPage answer = {answer}/>
-        :
-        null
-      }
+      <div ref = {resultRef}>
+        {
+          quiz.questions.length === step ?
+          <ResultPage  answer = {answer}/>
+          :
+          null
+        }
+      </div>
       </Wrapper>
   );
 };

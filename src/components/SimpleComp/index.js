@@ -18,7 +18,6 @@ import { useTheme } from '@material-ui/core/styles'
       const [isFlipped, setIsFlipped] = useState(false);
 
       const handleClick = () =>{
-        console.log(isFlipped);
           setIsFlipped(!isFlipped);
       }
 
@@ -59,7 +58,6 @@ import { useTheme } from '@material-ui/core/styles'
   }
 
 const SimpleComp = ({side,data,...props}) => {
-  console.log('RERENDERS')
   const theme = useTheme()
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
 

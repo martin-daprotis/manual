@@ -6,16 +6,16 @@ const BannerContainer = styled.div`
     height:40em;
     width: 100%;
     position:relative;
-    background-repeat: no-repeat;
-    background-size:cover; 
     background-image: url(${props => props.images[0]});
-    background-position: bottom right;
     background-image: 
       image-set( 
         url(${props => props.images[1]}) 1x, 
         url(${props => props.images[1]}) 2x ,
         url(${props => props.images[2]}) 3x 
       );
+    background-repeat: no-repeat;
+    background-size:cover; 
+    background-position: bottom right;
 
       @media ${ `${device.maxMobileL} , ${device.maxTablet}`}  { 
           &:after {

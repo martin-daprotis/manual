@@ -1,6 +1,5 @@
 
 import styled from "styled-components";
-import device from "../../Styles/device";
 import theme from "../../Styles/themes/main"
 
 const ContentContainer = styled.div`
