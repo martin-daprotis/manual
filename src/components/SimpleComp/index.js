@@ -56,7 +56,7 @@ import { useTheme } from '@material-ui/core/styles'
 
 const SimpleComp = ({side,data,...props}) => {
   const theme = useTheme()
-  const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
+  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'))
 
     return <>
       {!isDesktop ? 

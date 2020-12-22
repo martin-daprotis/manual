@@ -1,6 +1,8 @@
 
 import styled from "styled-components";
 import device from "../Styles/device";
+import theme from "../Styles/themes/main"
+
 
 const Title = styled.p`
   height: 48px;
@@ -16,7 +18,7 @@ const Title = styled.p`
   line-height: 1.33;
   letter-spacing: normal;
   text-align: center;
-  color: #0c3c3d;
+  color: ${theme.colors.dark_green};
 
   @media ${device.maxMobileL} { 
     font-size: 2em;

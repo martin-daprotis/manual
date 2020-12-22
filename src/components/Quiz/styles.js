@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -25%);
+  transform: translate(-50%, -20%);
 `
 
 const Container = styled.div`
@@ -37,7 +37,7 @@ const Container = styled.div`
 const Question = styled.p`
   font-family: Helvetica, sans-serif;
   font-size:1.8em;
-  color: #0c3c3d;
+  color: ${theme.colors.dark_green};
   text-align: center;
 `
 
@@ -94,8 +94,8 @@ const ImgOptionContainer= styled.div`
 `
 
 const ImageContainer = styled.div`
-  width:10em;
-  height:10em;
+  width:160px;
+  height:160px;
   cursor:pointer;
 
   & :hover{
@@ -122,16 +122,17 @@ const Logo = styled.div`
 
 const Result = styled.div`
   position:relative;
-  background-color:#e5f5f4;
+  background-color:${theme.colors.light_green};
   font-family: Montserrat, sans-serif;
   line-height: 1.4;
   font-size:1.2em;
   padding:3em 1em;
   margin: 0;
-  color:#0c3c3d;
+  color:${theme.colors.dark_green};
+  border-radius:16px;
 
   & a {
-    color:#0c3c3d;
+    color:${theme.colors.dark_green};
   }
 
 `

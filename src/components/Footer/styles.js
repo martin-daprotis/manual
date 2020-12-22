@@ -4,7 +4,7 @@ import device from "../../Styles/device";
 import theme from "../../Styles/themes/main"
 
 const Container = styled.div`
-  background-color: #e5f5f4;
+  background-color: ${theme.colors.light_green};
   display: flex;
   justify-content:center;
 
@@ -12,18 +12,15 @@ const Container = styled.div`
 const ColumnContainer = styled.div`
   margin: 80px 0 0;
   padding: 78px 40px 27px;
-  background-color: #e5f5f4;
+  background-color: ${theme.colors.light_green};
   display: flex;
   justify-content:center;
   flex-direction:column;
 `
-
-
 const LogoContainer = styled.div`
   flex: 0 0 30%;
   position:relative;
 `
-
 const Logo = styled.div`
   width: 5.5em;
   height: 5.6em;
@@ -41,15 +38,15 @@ const Logo = styled.div`
   -o-background-size: auto;
   background-size: auto;
   position:absolute;
-  top:5%;
+  top:28px;
   left:30%;
 
   @media ${device.maxMobileL} { 
-    top:0;
+    top:28px;
     left:0;
   }  
-
 `
+
 const RowContainer = styled.div`
   padding-top:10px;
   padding-left: 5em;
@@ -59,12 +56,12 @@ const RowContainer = styled.div`
   grid-template-columns: repeat(5, 1fr);
   flex: 0 0 70%;
 
-  @media ${device.maxMobileL} { 
+  @media ${device.maxMobileL},${device.maxTablet} { 
     grid-template-columns: repeat(2, 1fr);
     padding-left: 1em;
   }  
-
 `
+
 const SocialNetwork  = styled.div`
   position:absolute;
   display:flex;
@@ -76,22 +73,22 @@ const SocialNetwork  = styled.div`
     width:2em;
     height:2em;
     margin:0.4em;
-    color: #0c3c3d;  
+    color: ${theme.colors.dark_green};  
   }
   
-  @media ${device.maxMobileL} { 
+  @media ${device.maxMobileL},${device.maxTablet} { 
     transform:translateX(-15px);
     & svg {
       margin:0.5em;
     }
   }  
-
 `
 const List = styled.ul` 
   list-style-type: none;
   font-size: 0.85em;
   text-align:left;
   padding-left:1em;
+  white-space: nowrap;
 
   & li:first-child{
     color: ${theme.colors.tealish};
@@ -108,7 +105,7 @@ const List = styled.ul`
     font-style: normal;
     line-height: 2.57;
     letter-spacing: normal;
-    color: #0c3c3d;
+    color: ${theme.colors.dark_green};
   }
 `
 
@@ -131,7 +128,7 @@ const Wording = styled.div`
 `
 
 const Line = styled.span`
-  width: 80%;
+  width: 100%;
   margin: 2em auto;
   opacity: 0.3;
   border: solid 1px #6c6c6c;
@@ -141,8 +138,6 @@ const Line = styled.span`
   }  
 
 `
-
-
 export {
   Container,
   ColumnContainer,

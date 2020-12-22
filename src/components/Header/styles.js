@@ -84,7 +84,7 @@ const Title = styled.div`
       font-style: normal;
       line-height: 1.2;
       letter-spacing: normal;
-      color: #0c3c3d;
+      color: ${theme.colors.dark_green};
     }
 
    @media ${device.maxMobileL} { 
@@ -109,6 +109,7 @@ const Subtitle = styled.div`
   max-width: 300px;
   height: 80px;
   z-index:2;
+  margin-bottom:5em;
  
     & p {
       font-family: Helvetica, sans-serif;
@@ -118,7 +119,7 @@ const Subtitle = styled.div`
       font-style: normal;
       line-height: 1.44;
       letter-spacing: normal;
-      color: #0c3c3d;
+      color: ${theme.colors.dark_green};
       text-align: left;
       margin:0;
     }
@@ -133,7 +134,6 @@ const Button = styled.div`
   height: 1.2em;
   line-height: 1.2em;
   cursor:pointer;
-  margin: 38px 390px 0 10px;
   padding: 17px 37px 16px 38px;
   border-radius: 49.5px;
   box-shadow: 0 10px 30px -20px rgba(0, 0, 0, 0.5);

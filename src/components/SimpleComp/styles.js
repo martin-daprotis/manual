@@ -1,12 +1,15 @@
 
 import styled from "styled-components";
 import theme from "../../Styles/themes/main"
+import device from "../../Styles/device";
 
 const ContentContainer = styled.div`
   position:relative;
   height: 30em;
   width:80%;
-  margin:5em auto;
+  margin:100px 50%;
+  transform:translateX(-50%);
+
 
   & p {
       text-align:${props => props.side}
@@ -35,7 +38,7 @@ const ImageContainer = styled.div`
 const NumberContainer = styled.div`
   position:absolute;
   top:-10%;
-  ${props => `${props.side}:35% `};
+  ${props => `${props.side}:${props.side==='left'? '0.6em':'0.8em'} `};
   height:100%;
   width:60%;
   font-family: Montserrat, sans-serif;
@@ -52,7 +55,7 @@ const NumberContainer = styled.div`
 const Title = styled.p`
   position:absolute;
   top:10em;
-  ${props =>  `${props.side}:55%;`}
+  ${props =>  `${props.side}:42.5em;`}
   font-family: Montserrat, sans-serif;
   font-size: 0.8em;
   font-weight: bold;
@@ -68,7 +71,7 @@ const Title = styled.p`
 const Subtitle = styled.p`
   position:absolute;
   top:7em;
-  ${props =>  `${props.side}:55%;`}
+  ${props =>  `${props.side}:22.5em;`}
   width:14em;
   font-family: Helvetica, sans-serif;
   font-size: 1.5em;
@@ -77,7 +80,7 @@ const Subtitle = styled.p`
   font-style: normal;
   line-height: 1.45;
   letter-spacing: normal;
-  color: #0c3c3d;
+  color: ${theme.colors.dark_green};
   margin:0.4em;
   z-index:3;
 `
@@ -85,7 +88,7 @@ const Subtitle = styled.p`
 const Description = styled.p`
   position:absolute;
   top:20em;
-  ${props =>  `${props.side}:55%;`}
+  ${props =>  `${props.side}:42.5em;`}
   width:30em;
   font-family: 'Open Sans', sans-serif;
   font-size: 0.8em;
@@ -94,7 +97,7 @@ const Description = styled.p`
   font-style: normal;
   line-height: 1.83;
   letter-spacing: normal;
-  color: #0c3c3d;
+  color: ${theme.colors.dark_green};
   margin:0.4em;
   z-index:3;
 `
@@ -102,6 +105,7 @@ const CardContainer = styled.div`
   width: 20em;
   height: 25em;
   margin: 100px auto 0;
+  cursor:pointer;
   
 `
 
@@ -183,17 +187,15 @@ const Front = styled(Figure)`
 `
 
 const Back = styled(Figure)`
-  background-color: #e5f5f4;
+  background-color: ${theme.colors.light_green};
   transform: rotateY(180deg);
   -moz-transform: rotateY(180deg); 
   -webkit-transform: rotateY(180deg);
   z-index:2;
 `
-
-
 const CardSubtitle = styled.p`
   position:absolute;
-  top:0;
+  top:10%;
   left:50%;
   transform:translateX(-50%);
   width:20em;
@@ -203,7 +205,7 @@ const CardSubtitle = styled.p`
   font-style: normal;
   line-height: 1.45;
   letter-spacing: normal;
-  color: #0c3c3d;
+  color: ${theme.colors.dark_green};
   z-index:3;
 
   &  p {
@@ -213,6 +215,10 @@ const CardSubtitle = styled.p`
       text-align: center;
       font-family: Montserrat, sans-serif;
       padding: 0 0.5em;
+
+      @media ${device.maxMobileL},${device.maxTablet} { 
+        font-size:0.95em;
+      }
     }
 
 `
@@ -230,7 +236,7 @@ const CardDescription = styled.p`
   font-style: normal;
   line-height: 1.83;
   letter-spacing: normal;
-  color: #0c3c3d;
+  color: ${theme.colors.dark_green};
   margin:0.4em;
   z-index:3;
 
