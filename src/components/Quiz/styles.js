@@ -35,7 +35,7 @@ const Container = styled.div`
 
 `
 const Question = styled.p`
-  font-family: Helvetica;
+  font-family: Helvetica, sans-serif;
   font-size:1.8em;
   color: #0c3c3d;
   text-align: center;
@@ -47,7 +47,7 @@ const Opt = styled.div`
   cursor:pointer;
   border-radius: 49.5px;
   background-color: ${theme.colors.tealish};
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-size: 1.2em;
   font-weight: bold;
   font-stretch: normal;
@@ -123,7 +123,7 @@ const Logo = styled.div`
 const Result = styled.div`
   position:relative;
   background-color:#e5f5f4;
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   line-height: 1.4;
   font-size:1.2em;
   padding:3em 1em;

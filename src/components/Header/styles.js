@@ -77,7 +77,7 @@ const Title = styled.div`
   text-align: left;
  
     & span {
-      font-family: Montserrat;
+      font-family: Montserrat, sans-serif;
       font-size: 82px;
       font-weight: bold;
       font-stretch: normal;
@@ -111,7 +111,7 @@ const Subtitle = styled.div`
   z-index:2;
  
     & p {
-      font-family: Helvetica;
+      font-family: Helvetica, sans-serif;
       font-size: 1.1em;
       font-weight: normal;
       font-stretch: normal;
@@ -138,7 +138,7 @@ const Button = styled.div`
   border-radius: 49.5px;
   box-shadow: 0 10px 30px -20px rgba(0, 0, 0, 0.5);
   background-color: ${theme.colors.tealish};
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-size: 12px;
   font-weight: bold;
   font-stretch: normal;

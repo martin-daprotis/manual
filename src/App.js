@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import Header from './components/Header'
 import SimpleComp from './components/SimpleComp'
 import Quiz from './components/Quiz'
+import {Title} from './components/commons'
 
 
 const dataHair={
@@ -36,6 +37,7 @@ function App() {
         <Container  maxWidth="lg">
           <div style={{display:`${takeQuiz ? 'none':'block' }`}}>
             <Header takeQuiz={handleTakeQuiz}/>
+            <Title>What we can help with</Title>
             <SimpleComp data={dataHair} side='left'/>
             <SimpleComp data={dataSex} side='right'/>
             <Footer/>

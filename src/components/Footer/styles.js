@@ -4,17 +4,21 @@ import device from "../../Styles/device";
 import theme from "../../Styles/themes/main"
 
 const Container = styled.div`
+  background-color: #e5f5f4;
+  display: flex;
+  justify-content:center;
+
+`
+const ColumnContainer = styled.div`
   margin: 80px 0 0;
   padding: 78px 40px 27px;
   background-color: #e5f5f4;
   display: flex;
   justify-content:center;
-
-  @media ${device.maxMobileL} { 
-    padding: 38px 10px 17px;
-  }  
-
+  flex-direction:column;
 `
+
+
 const LogoContainer = styled.div`
   flex: 0 0 30%;
   position:relative;
@@ -42,11 +46,10 @@ const Logo = styled.div`
 
   @media ${device.maxMobileL} { 
     top:0;
+    left:0;
   }  
 
 `
-
-
 const RowContainer = styled.div`
   padding-top:10px;
   padding-left: 5em;
@@ -62,7 +65,6 @@ const RowContainer = styled.div`
   }  
 
 `
-
 const SocialNetwork  = styled.div`
   position:absolute;
   display:flex;
@@ -85,7 +87,6 @@ const SocialNetwork  = styled.div`
   }  
 
 `
-
 const List = styled.ul` 
   list-style-type: none;
   font-size: 0.85em;
@@ -100,7 +101,7 @@ const List = styled.ul`
 
   & li{
     cursor: pointer;
-    font-family: Helvetica;
+    font-family: Helvetica, sans-serif;
     font-size: 14px;
     font-weight: normal;
     font-stretch: normal;
@@ -114,18 +115,42 @@ const List = styled.ul`
 const Wording = styled.div`
   text-align:center;
   padding:10px;
-  font-size:0.7em;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.9em;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.83;
+  letter-spacing: normal;
+  text-align: center;
+  color: rgba(108, 108, 108, 0.5);
 
   @media ${device.maxMobileL} { 
     margin-top:3em;
   }  
 `
+
+const Line = styled.span`
+  width: 80%;
+  margin: 2em auto;
+  opacity: 0.3;
+  border: solid 1px #6c6c6c;
+
+  @media ${device.maxMobileL} { 
+    width: 100%;
+  }  
+
+`
+
+
 export {
   Container,
+  ColumnContainer,
   RowContainer,
   List,
   SocialNetwork,
   Wording,
   LogoContainer,
-  Logo
+  Logo,
+  Line
 }

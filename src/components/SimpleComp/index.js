@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import {
   Card,
+  Front,
+  Back,
   CardSubtitle,
   CardDescription,
   ContentContainer,
@@ -9,6 +11,7 @@ import {
   Subtitle,
   Title,
   Description,
+  CardContainer
 } from "./styles"
 import { useMediaQuery } from '@material-ui/core'
 import { useTheme } from '@material-ui/core/styles'
@@ -22,26 +25,20 @@ import { useTheme } from '@material-ui/core/styles'
       }
 
     return (
-      <Card onClick={handleClick} images={data.images}>
-        <div  className={`card__inner ${isFlipped ? 'flipped':''}`}>
-          <div className="card__face card__face--front"  >
+      <CardContainer>
+        <Card>
+          <Front images={data.images}>
             <h6>{data.title}</h6>
-          </div>
-          <div className="card__face card__face--back">
-            <div className="card__content">
-              <div className="card__header">
-              <CardSubtitle>{data.subtitle.split('|').map(line =>
-                <p>{line}</p>
-                )}
-              </CardSubtitle>
-              </div>
-              <div className="card__body">
-                <CardDescription>{data.detail}</CardDescription>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Card>
+          </Front>
+          <Back>
+            <CardSubtitle>{data.subtitle.split('|').map(line =>
+              <p>{line}</p>
+              )}
+            </CardSubtitle>
+            <CardDescription>{data.detail}</CardDescription>
+          </Back>
+        </Card>
+      </CardContainer>
     )
   })
 
