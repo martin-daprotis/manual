@@ -116,7 +116,7 @@ const Card = styled.div`
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   
-  &:hover{
+  &.flipped{
     transform: rotateY(180deg);
     -moz-transform: rotateY(180deg); 
     -webkit-transform: rotateY(180deg);
@@ -219,7 +219,7 @@ const CardSubtitle = styled.p`
 
 const CardDescription = styled.p`
   position:absolute;
-  top:12em;
+  top:15em;
   left:50%;
   transform:translateX(-50%);
   width:23em;

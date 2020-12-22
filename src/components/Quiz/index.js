@@ -50,6 +50,8 @@ const BooleanOptions = ({options,handleClick}) => {
   
 
 const Quiz = () => {
+  const [loading, setLoading] = useState(true);
+  const [questions, setQuestions] = useState(quiz);
   const [answer,serAnswer] = useState(false);
   const [step, setStep] = useState(0);
   const wrapperRef=useRef();
@@ -74,39 +76,60 @@ const Quiz = () => {
     setStep(oldStep => oldStep+1)
   }
 
+  useEffect(() => {
+    setLoading(true);
+    const getQuiz = async () => {
+      try{
+        const res = await axios.get('http://localhost:4000/get_quiz');
+        if(res.status===200 && res.data){
+          setQuestions(res.data);
+        }
+        setLoading(false);
+      }
+      catch(err){
+        console.log(err);
+        setLoading(false);
+      }
+    }
+    getQuiz();
+  }, []);
+
+
+  if(loading)
+    return <h3>Loading...</h3>
 
   return (
       <Wrapper>
-      <Container ref={wrapperRef}>
+        <Container ref={wrapperRef}>
+            {
+              questions.questions.length >= step+1 && questions.questions.map((q,i) => {
+                if(q.options.length) { 
+                  const firstOpt = Object.keys(q.options[0])[0];
+                  if(i===step)
+                    return <>
+                      <Question>{q.question}</Question>
+                      { q.options.length && firstOpt.includes('<img') ?
+                          <ImageOptions options = {q.options} handleClick = {handleClick}/>
+                        :
+                          <BooleanOptions options = {q.options} handleClick = {handleClick}/>
+                      }
+                      </>
+                  return null
+                }
+                else{
+                  return null;
+                }
+              })
+            }
+        </Container>
+        <div ref = {resultRef}>
           {
-            quiz.questions.length >= step+1 && quiz.questions.map((q,i) => {
-              if(q.options.length) { 
-                const firstOpt = Object.keys(q.options[0])[0];
-                if(i===step)
-                  return <>
-                    <Question>{q.question}</Question>
-                    { q.options.length && firstOpt.includes('<img') ?
-                        <ImageOptions options = {q.options} handleClick = {handleClick}/>
-                      :
-                        <BooleanOptions options = {q.options} handleClick = {handleClick}/>
-                    }
-                    </>
-                return null
-              }
-              else{
-                return null;
-              }
-            })
+            questions.questions.length === step ?
+            <ResultPage  answer = {answer}/>
+            :
+            null
           }
-      </Container>
-      <div ref = {resultRef}>
-        {
-          quiz.questions.length === step ?
-          <ResultPage  answer = {answer}/>
-          :
-          null
-        }
-      </div>
+        </div>
       </Wrapper>
   );
 };

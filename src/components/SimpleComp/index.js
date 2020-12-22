@@ -25,8 +25,8 @@ import { useTheme } from '@material-ui/core/styles'
       }
 
     return (
-      <CardContainer>
-        <Card>
+      <CardContainer onClick={handleClick} >
+        <Card className={`${isFlipped ? 'flipped':''}`}>
           <Front images={data.images}>
             <h6>{data.title}</h6>
           </Front>
