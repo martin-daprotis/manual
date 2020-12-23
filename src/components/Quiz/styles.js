@@ -18,6 +18,7 @@ const Container = styled.div`
   display: flex;
   flex-direction:column;
   justify-content:center;
+  align-items:center;
   opacity: 1;
 	animation-name: fadeInOpacity;
 	animation-iteration-count: 1;
@@ -39,6 +40,7 @@ const Question = styled.p`
   font-size:1.8em;
   color: ${theme.colors.dark_green};
   text-align: center;
+  max-width:80%;
 `
 
 const Opt = styled.div`
