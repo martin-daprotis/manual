@@ -50,7 +50,7 @@ const BooleanOptions = ({options,handleClick}) => {
   
 
 const Quiz = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState(quiz);
   const [answer,serAnswer] = useState(false);
   const [step, setStep] = useState(0);
